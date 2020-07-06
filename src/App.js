@@ -43,9 +43,6 @@ function App() {
     <div className="App" style={{ backgroundImage: `url(img/${backgrounds[background]})` }}>
       <header className="App-header">
         <h1>{quote}</h1>
-        <p>
-          <button onClick={async () => { setBackground(getRandomInt(0, 8)); setQuote(await fetchQuote()) }}>Refresh</button>
-        </p>
       </header>
     </div >
   );
