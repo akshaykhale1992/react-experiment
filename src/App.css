@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Dancing Script", cursive;
   background-size: cover;
 }
 
@@ -9,8 +10,8 @@
 }
 
 h1 {
-  font-family: 'Dancing Script', cursive;
-  width: 50%;
+  width: 60%;
+  font-size: 1.5em;
 }
 
 button {

@@ -9,9 +9,8 @@ function getRandomInt(min, max) {
 }
 
 async function fetchQuote() {
-  let response = await axios.get(`https://api.adviceslip.com/advice/${getRandomInt(1, 217)}`)
-  response = JSON.parse(response.data + "}")
-  return response.slip.advice
+  let response = await axios.get(`https://raw.githubusercontent.com/akshaykhale1992/quotes-api/master/quotes/${getRandomInt(1, 100)}.json`)
+  return response.data
 }
 
 
@@ -30,10 +29,13 @@ function App() {
   const [background, setBackground] = useState(0)
 
   const [quote, setQuote] = useState("Welcome... great to have you here!!!")
+  const [author, setAuthor] = useState("Akshay Khale")
 
   useEffect(() => {
     const fetchData = async () => {
-      setQuote(await fetchQuote())
+      const quoteData = await fetchQuote()
+      setQuote(quoteData.message)
+      setAuthor(quoteData.author)
     }
     setBackground(getRandomInt(0, 8))
     fetchData()
@@ -43,6 +45,7 @@ function App() {
     <div className="App" style={{ backgroundImage: `url(img/${backgrounds[background]})` }}>
       <header className="App-header">
         <h1>{quote}</h1>
+        <span>- {author} -</span>
       </header>
     </div >
   );
